@@ -8,7 +8,7 @@ export default function(time,opts){
   // 根据给定时区计算时间戳
   var timeZone=opts.timeZone || 8
   var times=zoneDate+timeZone*60*60*1000
-  var timeDate=new Date(time)
+  var timeDate=new Date(times)
 
   // 根据格式输出
   var days=['星期一','星期二','星期三','星期四','星期五','星期六','星期日']
