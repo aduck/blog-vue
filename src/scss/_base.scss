@@ -1,0 +1,15 @@
+// vars
+$baseSize:64;
+
+// mixins
+@mixin dprsize($sel,$size){
+  [data-dpr='1'] #{$sel}{
+    font-size:$size;
+  }
+  [data-dpr='2'] #{$sel}{
+    font-size:$size*2;
+  }
+  [data-dpr='3'] #{$sel}{
+    font-size:$size*3;
+  }
+}

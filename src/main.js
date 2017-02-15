@@ -1,3 +1,6 @@
+// 加载样式
+require('./scss/reset.scss')
+
 import Vue from 'vue'
 import App from './App'
 import VueRouter from 'vue-router'

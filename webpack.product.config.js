@@ -25,6 +25,10 @@ module.exports={
             css:ExtractTextPlugin.extract({
               loader:'css-loader',
               fallback:'vue-style-loader'
+            }),
+            scss:ExtractTextPlugin.extract({
+              loader:'css-loader!sass-loader',
+              fallback:'vue-style-loader'
             })
           }
         }
@@ -33,6 +37,13 @@ module.exports={
         test:/\.js$/,
         exclude:/node_modules/,
         loader:'babel-loader'
+      },
+      {
+        test:/\.scss$/,
+        loader:ExtractTextPlugin.extract({
+          loader:'css-loader!sass-loader',
+          fallback:'style-loader'
+        })
       }
     ]
   },
@@ -44,7 +55,7 @@ module.exports={
       name:"vendor",
       minChunks:Infinity
     }),
-    new ExtractTextPlugin("style.css"),
+    new ExtractTextPlugin({allChunks:true,filename:"h5.css"}),
     new UglifyJsPlugin({
       output:{
         comments:false

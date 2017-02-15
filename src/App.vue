@@ -13,5 +13,9 @@
 </script>
 
 <style lang="scss" scoped>
-  
+  @import 'scss/_base.scss';
+  #app{
+    width:10rem;
+    margin:(90rem/$baseSize) auto 0;
+  }
 </style>

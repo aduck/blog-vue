@@ -4,12 +4,16 @@
     <div class="error" v-if="error">{{error}}</div>
     <div class="article" v-if="article">
       <div class="title">{{article.title}}</div>
-      <div class="content" v-html="article.content">{{article.content}}</div>
+      <div class="info">
+        <i class="fa fa-clock-o"></i> {{dateFormated}}
+      </div>
+      <div class="content markdown" v-html="article.content">{{article.content}}</div>
     </div>
   </div>
 </template>
 
 <script>
+  import date from '../js/date'
   export default {
     data(){
       return {
@@ -33,10 +37,40 @@
             this.error=err.toString()
           })
       }
+    },
+    computed:{
+      dateFormated(){
+        var self=this
+        return date(self.article.meta.createAt)
+      }
+    },
+    watch:{
+      '$route'(to,from){
+        this.getArticle(to.params.id)
+      }
     }
   }
 </script>
 
-<style scoped>
-  .article{padding:30px;color:#333;font-size:15px;}
+<style lang="scss">
+  @import '../scss/_base.scss';
+  @import '../scss/md.scss';
+  .container{background:#fff;}
+  .article{
+    padding:(10rem/$baseSize);
+    background:#fff;
+    .info{
+      text-align:center;
+      color:#999;
+    }
+    .title{
+      padding:(16rem/$baseSize) 0 (10rem/$baseSize);
+      text-align:center;
+    }
+    .content{
+      margin-top:(20rem/$baseSize);
+    }
+  }
+  
+  @include dprsize('.article .title',18px);
 </style>
