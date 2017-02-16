@@ -22,6 +22,7 @@
     },
     methods:{
       getArticles(){
+        this.loading=true
         this.$http.get('/api/journals')
           .then(function(res){
             this.loading=false

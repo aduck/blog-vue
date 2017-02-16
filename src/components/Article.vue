@@ -27,6 +27,7 @@
     },
     methods:{
       getArticle(id){
+        this.loading=true
         this.$http.get(`/api/journal?id=${id}`)
           .then(function(res){
             this.loading=false

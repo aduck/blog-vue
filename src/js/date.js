@@ -3,7 +3,7 @@ export default function(time,opts){
   // 计算零时区的时间戳
   var date=new Date()
   var offset=date.getTimezoneOffset()*60*1000
-  var zoneDate=time+offset
+  var zoneDate=new Date(time).getTime()+offset
 
   // 根据给定时区计算时间戳
   var timeZone=opts.timeZone || 8
